@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>_8.3ListView_Selection</title>
+    <link href="lib/winjs-4.0.1/css/ui-light.css" rel="stylesheet" />
+    <script src="lib/winjs-4.0.1/js/base.js"></script>
+    <script src="lib/winjs-4.0.1/js/ui.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+</head>
+<body class="win-type-body">
+    <div id="sample">
+        <!-- Simple template for the ListView instantiation  -->
+        <div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+            <div class="smallListIconTextItem">
+                <img src="#" class="smallListIconTextItem-Image" data-win-bind="src: picture" />
+                <div class="smallListIconTextItem-Detail">
+                    <h4 class="win-h4" data-win-bind="textContent: title"></h4>
+                    <h6 class="win-h6" data-win-bind="textContent: text"></h6>
+                </div>
+            </div>
+        </div>
+        <!-- Elements used for header and footer elements for ListView -->
+        <div class="headerFooterPlaceholder">
+            <div class="header">
+                <div class="button-well">
+                    <button class="win-button" data-win-bind="onclick: changeSelectionMode">ReadOnly</button>
+                    <button class="win-button" data-win-bind="onclick: changeSelectionMode">Single</button>
+                    <button class="win-button" data-win-bind="onclick: changeSelectionMode">Extended</button>
+                    <button class="win-button" data-win-bind="onclick: changeSelectionMode">Multi</button>
+                </div>
+                <h3 class="win-h3">Selection Scenario: <span data-win-bind="textContent: context.currentMode.name">None</span></h3>
+            </div>
+        </div>
+
+        <!-- The declarative markup necesary for ListView instantiation -->
+        <!-- Call WinJS.UI.processAll() in your initialization code -->
+        <div class="listView win-selectionstylefilled"
+             data-win-control="WinJS.UI.ListView"
+             data-win-options="{
+                    itemDataSource: Sample.ListView.data.dataSource,
+                    itemTemplate: select('.smallListIconTextTemplate'),
+                    header: select('.header'),
+                    selectionMode: 'none',
+                    tapBehavior: 'none',             
+                    layout: { type: WinJS.UI.ListLayout },
+                    itemsReorderable: true
+            }">
+        </div>
+    </div>
+
+</body>
+</html>
